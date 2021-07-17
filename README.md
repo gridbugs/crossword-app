@@ -1,6 +1,12 @@
 # Crossword App
 
-## Running
+## Install
+
+```
+npm install
+```
+
+## Run
 
 ```
 npm run serve

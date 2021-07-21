@@ -7,7 +7,7 @@ export default {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    main: './index.ts',
+    main: './ts/index.ts',
   },
   output: {
     path: path.resolve('./dist'),
@@ -26,7 +26,7 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './static/index.html',
       filename: 'index.html',
     }),
     new CopyPlugin({
@@ -35,7 +35,7 @@ export default {
       ],
     }),
     new ESLintPlugin({
-      files: '**',
+      files: './ts/**',
       fix: true,
     }),
   ],

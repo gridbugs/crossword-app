@@ -1,15 +1,16 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
 
-module.exports = {
+export default {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
     main: './index.ts',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve('./dist'),
     filename: './index.js',
   },
   resolve: {
@@ -33,9 +34,13 @@ module.exports = {
         { from: 'samples', to: 'samples' },
       ],
     }),
+    new ESLintPlugin({
+      files: '**',
+      fix: true,
+    }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: './dist',
     writeToDisk: true,
   },
 };

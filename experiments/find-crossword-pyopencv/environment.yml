@@ -3,3 +3,4 @@ channels:
 dependencies:
   - numpy=1.21.0
   - opencv=4.5.2
+  - tesseract=4.1.1

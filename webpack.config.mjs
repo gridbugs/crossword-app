@@ -15,6 +15,12 @@ export default {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    // needed for opencv
+    fallback: {
+      fs: false,
+      path: false,
+      crypto: false
+    },
   },
   module: {
     rules: [

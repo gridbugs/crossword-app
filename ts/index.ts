@@ -1,15 +1,8 @@
-import { createWorker } from 'tesseract.js';
-import loadImage from 'image-promise';
+import cv from '@techstark/opencv-js';
+import { loadImage } from './util';
 
-(async () => {
+cv.onRuntimeInitialized = async () => {
   const sample = await loadImage('/samples/smh-cryptic-2020-07-16.png');
-  document.body.appendChild(sample);
-  const worker = createWorker({
-    logger: (m) => console.log(m)
-  });
-  await worker.load();
-  await worker.loadLanguage('eng');
-  await worker.initialize('eng');
-  const out = await worker.recognize(sample);
-  console.log(out);
-})();
+  const im = cv.imread(sample);
+  cv.imshow('debugCanvas', im);
+};

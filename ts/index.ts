@@ -1,4 +1,4 @@
-import cv from '@techstark/opencv-js';
+import * as cv from '../js/cv';
 import { loadImage } from './util';
 
 /**
@@ -41,7 +41,7 @@ function contourParentIndex(contourIndex: number, hierarchy: cv.Mat): number {
   return hierarchy.intPtr(0, contourIndex)[3];
 }
 
-cv.onRuntimeInitialized = async () => {
+cv.callOnRuntimeInitialized(async () => {
   // load an image
   const sample = await loadImage('/samples/smh-cryptic-2020-07-16.png');
 
@@ -85,4 +85,4 @@ cv.onRuntimeInitialized = async () => {
   im.delete();
   tmp.delete();
   debug.delete();
-};
+});

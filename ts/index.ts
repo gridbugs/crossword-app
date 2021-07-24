@@ -43,7 +43,7 @@ function contourParentIndex(contourIndex: number, hierarchy: cv.Mat): number {
 
 cv.callOnRuntimeInitialized(async () => {
   // load an image
-  const sample = await loadImage('/samples/smh-cryptic-2020-07-16.png');
+  const sample = await loadImage('samples/smh-cryptic-2020-07-16.png');
 
   // make a cv.Mat containing the image pixel data
   const im = cv.imread(sample);

@@ -15,7 +15,7 @@ npm run serve
 ## Build
 
 ```
-npu run build
+npm run build
 ```
 
 ## Build for Production

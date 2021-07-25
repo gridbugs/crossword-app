@@ -20,6 +20,7 @@ export declare class Size {
 export declare class Mat {
   clone(): Mat;
   size(): Size;
+  intAt(i: int, j: int): number;
   intPtr(i: int, j: int): Int32Array;
   delete(): void;
 }

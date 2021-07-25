@@ -178,6 +178,27 @@ function extractClueGeometry(contours: cv.MatVector, hierarchy: cv.Mat, crosswor
   return clues;
 }
 
+const ClueGeometry = ({ clues }: { clues: ClueGeometry[] }): JSX.Element => <div>
+  <table><tbody><tr>
+  <td>
+  <h2>Across</h2>
+  <ul>
+  { clues.filter((c) => c.direction === 'across')
+    .map((c, i) => <li key={i}><strong>{c.number}.</strong> ({c.length})</li>)
+  }
+  </ul>
+  </td>
+  <td>
+  <h2>Down</h2>
+  <ul>
+  { clues.filter((c) => c.direction === 'down')
+    .map((c, i) => <li key={i}><strong>{c.number}.</strong> ({c.length})</li>)
+  }
+  </ul>
+  </td>
+  </tr></tbody></table>
+  </div>;
+
 cv.callOnRuntimeInitialized(async () => {
   // load an image
   const sample = await loadImage('samples/smh-cryptic-2020-07-16.png');
@@ -200,7 +221,7 @@ cv.callOnRuntimeInitialized(async () => {
   // find the index of the contour representing the boundary of the crossword
   const crosswordBorderIndex = findCrosswordBorderContourIndex(contours);
 
-  const _clues = extractClueGeometry(contours, hierarchy, crosswordBorderIndex);
+  const clues = extractClueGeometry(contours, hierarchy, crosswordBorderIndex);
 
   // another copy of the image which we'll draw debugging lines on
   const debug = im.clone();
@@ -226,7 +247,9 @@ cv.callOnRuntimeInitialized(async () => {
   debug.delete();
 
   ReactDOM.render(
-    <h1>Hello, world!</h1>,
+    <div>
+    <ClueGeometry clues={clues} />
+    </div>,
     document.getElementById('root')
   );
 });

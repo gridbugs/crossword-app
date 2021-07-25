@@ -7,14 +7,14 @@ export default {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    main: './ts/index.ts',
+    main: './ts/index.tsx',
   },
   output: {
     path: path.resolve('./dist'),
     filename: './index.js',
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     // needed for opencv
     fallback: {
       fs: false,
@@ -25,7 +25,7 @@ export default {
   module: {
     rules: [
       {
-        test: /.ts$/,
+        test: /.tsx?$/,
         loader: 'ts-loader',
       }
     ]

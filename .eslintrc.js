@@ -9,6 +9,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    "plugin:react/recommended",
   ],
   globals: {
     Atomics: 'readonly',
@@ -40,5 +41,13 @@ module.exports = {
     'default-case': 'off',
     'consistent-return': 'off',
     'max-len': ['error', { 'code': 120 }],
+    // note you must disable the base rule as it can report incorrect errors
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+  },
+  settings: {
+    react: {
+      version: '17',
+    },
   },
 };

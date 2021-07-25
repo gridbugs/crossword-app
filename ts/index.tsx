@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import * as cv from '../js/cv';
 import { loadImage } from './util';
 import * as coord2 from './coord2';
@@ -222,4 +224,9 @@ cv.callOnRuntimeInitialized(async () => {
   im.delete();
   tmp.delete();
   debug.delete();
+
+  ReactDOM.render(
+    <h1>Hello, world!</h1>,
+    document.getElementById('root')
+  );
 });
